@@ -35,6 +35,8 @@ const ReservationForm = () => {
     selectedMenu: "",
   });
 
+  const [showMenus, setShowMenus] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
@@ -154,21 +156,30 @@ const ReservationForm = () => {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-display text-primary">Choisissez votre menu</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {Object.entries(menus).map(([type, menu]) => (
-              <MenuCard
-                key={type}
-                type={type.charAt(0).toUpperCase() + type.slice(1)}
-                entree={menu.entree}
-                plat={menu.plat}
-                dessert={menu.dessert}
-                price={menu.price}
-                selected={formData.selectedMenu === type}
-                onSelect={() => setFormData({ ...formData, selectedMenu: type })}
-              />
-            ))}
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowMenus(!showMenus)}
+            className="w-full bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors text-xl font-display"
+          >
+            {showMenus ? "Masquer les menus" : "Choisissez votre menu"}
+          </button>
+          
+          {showMenus && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+              {Object.entries(menus).map(([type, menu]) => (
+                <MenuCard
+                  key={type}
+                  type={type.charAt(0).toUpperCase() + type.slice(1)}
+                  entree={menu.entree}
+                  plat={menu.plat}
+                  dessert={menu.dessert}
+                  price={menu.price}
+                  selected={formData.selectedMenu === type}
+                  onSelect={() => setFormData({ ...formData, selectedMenu: type })}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="flex justify-between items-center">
