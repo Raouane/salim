@@ -6,15 +6,22 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section with Image */}
       <div className="pt-16 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <h1 className="text-4xl md:text-5xl font-display text-primary mb-4">
-            SALIM Traiteur
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Découvrez nos délicieux menus traditionnels pour vos événements
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <img
+            src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9"
+            alt="Plat traditionnel"
+            className="rounded-lg object-cover w-full h-64 mb-8"
+          />
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-display text-primary mb-4">
+              SALIM Traiteur
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Découvrez nos délicieux menus traditionnels pour vos événements
+            </p>
+          </div>
         </div>
       </div>
 
