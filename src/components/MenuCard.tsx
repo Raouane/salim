@@ -3,11 +3,12 @@ interface MenuCardProps {
   entree: string;
   plat: string;
   dessert: string;
+  price: number;
   selected: boolean;
   onSelect: () => void;
 }
 
-const MenuCard = ({ type, entree, plat, dessert, selected, onSelect }: MenuCardProps) => {
+const MenuCard = ({ type, entree, plat, dessert, price, selected, onSelect }: MenuCardProps) => {
   return (
     <div
       className={`border rounded-lg p-6 cursor-pointer transition-all ${
@@ -24,7 +25,7 @@ const MenuCard = ({ type, entree, plat, dessert, selected, onSelect }: MenuCardP
         <p><span className="font-semibold">Dessert :</span> {dessert}</p>
       </div>
       <div className="mt-4 text-right">
-        <span className="text-lg font-semibold text-primary">30€ / personne</span>
+        <span className="text-lg font-semibold text-primary">{price}€ / personne</span>
       </div>
     </div>
   );

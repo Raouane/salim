@@ -7,16 +7,19 @@ const menus = {
     entree: "Brik à l'œuf",
     plat: "Couscous aux légumes",
     dessert: "Zlabia",
+    price: 30
   },
   marocain: {
     entree: "Pastilla",
     plat: "Tajine d'agneau",
     dessert: "Corne de gazelle",
+    price: 35
   },
   algerien: {
     entree: "Bourek",
     plat: "Chakchouka",
     dessert: "Kalb el louz",
+    price: 25
   },
 };
 
@@ -38,19 +41,15 @@ const ReservationForm = () => {
     alert("Réservation envoyée avec succès !");
   };
 
-  const totalPrice = formData.guests * 30;
+  const selectedMenuPrice = formData.selectedMenu ? menus[formData.selectedMenu as keyof typeof menus].price : 30;
+  const totalPrice = formData.guests * selectedMenuPrice;
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <div className="mb-12">
         <img
           src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9"
           alt="Plat traditionnel"
-          className="rounded-lg object-cover w-full h-64"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1540914124281-342587941389"
-          alt="Service traiteur"
           className="rounded-lg object-cover w-full h-64"
         />
       </div>
@@ -164,6 +163,7 @@ const ReservationForm = () => {
                 entree={menu.entree}
                 plat={menu.plat}
                 dessert={menu.dessert}
+                price={menu.price}
                 selected={formData.selectedMenu === type}
                 onSelect={() => setFormData({ ...formData, selectedMenu: type })}
               />
